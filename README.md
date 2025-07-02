@@ -55,5 +55,4 @@ This is a Spring Boot-based RESTful API for managing job postings. It follows a 
 ## Author
 
 **Venkatesh Dwivedi**  
-B.Tech, NIT Rourkela (2021)  
-Backend Developer | Spring Boot Learner
+
