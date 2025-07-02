@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Component
 @Entity
 public class JobPost {
 
@@ -21,7 +21,9 @@ public class JobPost {
 	private int postId;
 	private String postProfile; 
 	private String postDesc;
-	private Integer reqExperience;
+	private Integer reqExperience;	
+
+	@ElementCollection
 	private List<String> postTechStack;
 	
 

@@ -48,11 +48,11 @@ public class JobRestController {
         return "deleted";
     }
 
-    @GetMapping("load")
-    public String loadData(){
-        service.loadData();
-        return "succesfully loaded";
-    }
+    // @GetMapping("load")
+    // public String loadData(){
+    //     service.loadData();
+    //     return "succesfully loaded";
+    // }
 
     @GetMapping("jobpost/search/{keyword}")
     public List<JobPost> searchData(@PathVariable("keyword")String keyword){
