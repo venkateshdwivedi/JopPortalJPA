@@ -1,4 +1,4 @@
-package com.example.jobportaljpa;
+package com.example.jobportaljpa.controller;
 
 import java.util.List;
 
