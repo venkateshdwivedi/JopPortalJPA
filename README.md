@@ -115,19 +115,19 @@ This is a secure and modular Job Portal backend application built using Spring B
 ## Screenshots
 
 ### 1. Postman: Get All Job Posts with Authentication  
-![Get All JobPosts](screenshots/get_all_jobposts.png)
+![Get All JobPosts](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/get_all_jobposts.png)
 
 ### 2. Postman: Get Job Post by ID (`/jobpost/3`)  
-![Get JobPost by ID](screenshots/get_jobpost_by_id.png)
+![Get JobPost by ID](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/get_jobpost_by_id.png)
 
 ### 3. Postman: Add a New User  
-![Add User](screenshots/add_user.png)
+![Add User](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/add_user.png)
 
 ### 4. VS Code: Logs and Project Structure with AOP  
-![VS Code Logs and Structure](screenshots/vscode_logs_structure.png)
+![VS Code Logs and Structure](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/vscode_logs_structure.png)
 
 ### 5. PostgreSQL: JobPost Table in the Database  
-![PostgreSQL JobPost Table](screenshots/postgresql_jobpost_table.png)
+![PostgreSQL JobPost Table](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/postgresql_jobpost_table.png)
 
 
 ## Author
