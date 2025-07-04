@@ -28,11 +28,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
-        // http.csrf(Customizer->Customizer.disable());
-        // http.authorizeHttpRequests(request->request.anyRequest().authenticated());
-        // http.httpBasic(Customizer.withDefaults());
-        // http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
         http.csrf(customizer -> customizer.disable())
 				.authorizeHttpRequests(request -> request.anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
@@ -50,41 +45,5 @@ public class SecurityConfig {
         provider.setPasswordEncoder(new BCryptPasswordEncoder(10));
         return provider;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //for static data we use InMemoryUserDetailsManager
-    // @Bean
-    // public UserDetailsService userDetailsService(){
-
-    //     UserDetails user=User
-	// 				.withDefaultPasswordEncoder()
-	// 				.username("navin")
-	// 				.password("n@123")
-	// 				.roles("USER")
-	// 				.build();
-
-    //   UserDetails  admin=User
-	// 				.withDefaultPasswordEncoder()
-	// 				.username("admin")
-	// 				.password("admin@789")
-	// 				.roles("ADMIN")
-	// 				.build();
-
-    //     return new InMemoryUserDetailsManager(user,admin);
-    // }
-
-
-
 
 }
