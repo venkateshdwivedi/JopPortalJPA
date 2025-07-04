@@ -112,22 +112,22 @@ This is a secure and modular Job Portal backend application built using Spring B
 - User credentials are stored securely with encrypted passwords
 - DAO-based authentication configured via `UserDetailsService`
 
-##  Screenshots
+## Screenshots
 
-### 1. Get All Job Posts (Secured Endpoint)
-![Get Job Posts](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/screenshots/postman_get_jobposts.png)
+### 1. Postman: Get All Job Posts with Authentication  
+![Get All JobPosts](screenshots/get_all_jobposts.png)
 
-### 2. Get Specific Job Post by ID (Validation + Logging)
-![Get Job Post by ID](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/screenshots/postman_get_jobpost_id.png)
+### 2. Postman: Get Job Post by ID (`/jobpost/3`)  
+![Get JobPost by ID](screenshots/get_jobpost_by_id.png)
 
-### 3. Add New User (User Registration Endpoint)
-![Add New User](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/screenshots/postman_add_user.png)
+### 3. Postman: Add a New User  
+![Add User](screenshots/add_user.png)
 
-### 4. PostgreSQL JobPost Table View
-![PostgreSQL Table](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/screenshots/postgresql_table.png)
+### 4. VS Code: Logs and Project Structure with AOP  
+![VS Code Logs and Structure](screenshots/vscode_logs_structure.png)
 
-### 5. VS Code - Performance Logs & Project Structure
-![VS Code Logs](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/screenshots/vscode_logs.png)
+### 5. PostgreSQL: JobPost Table in the Database  
+![PostgreSQL JobPost Table](screenshots/postgresql_jobpost_table.png)
 
 
 ## Author
