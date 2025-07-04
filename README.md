@@ -114,20 +114,26 @@ This is a secure and modular Job Portal backend application built using Spring B
 
 ## Screenshots
 
-### 1. Postman: Get All Job Posts with Authentication  
-![Get All JobPosts](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/get_all_jobposts.png)
+- **Get All Job Posts**  
+  Displays all available job posts using the `GET /jobposts` endpoint.  
+  ![Get All Job Posts](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/src/main/java/com/example/jobportaljpa/screenshots/get_all_jobposts.PNG)
 
-### 2. Postman: Get Job Post by ID (`/jobpost/3`)  
-![Get JobPost by ID](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/get_jobpost_by_id.png)
+- **Get Job Post by ID**  
+  Retrieves a single job post using `GET /jobposts/{id}`.  
+  ![Get Job Post by ID](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/src/main/java/com/example/jobportaljpa/screenshots/get_jobpost_by_id.PNG)
 
-### 3. Postman: Add a New User  
-![Add User](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/add_user.png)
+- **Add User**  
+  Registers a new user to access the job portal using the `POST /register` endpoint.  
+  ![Add User](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/src/main/java/com/example/jobportaljpa/screenshots/add_user.PNG)
 
-### 4. VS Code: Logs and Project Structure with AOP  
-![VS Code Logs and Structure](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/vscode_logs_structure.png)
+- **VS Code Logs and Project Structure**  
+  Shows project folder structure and console logs for Spring AOP and performance monitoring.  
+  ![VS Code Logs and Structure](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/src/main/java/com/example/jobportaljpa/screenshots/vscode_logs_structure.PNG)
 
-### 5. PostgreSQL: JobPost Table in the Database  
-![PostgreSQL JobPost Table](https://raw.githubusercontent.com/venkateshdwivedi/JopPortalJPA/main/src/main/java/com/example/jobportaljpa/screenshots/postgresql_jobpost_table.png)
+- **PostgreSQL JobPost Table**  
+  Displays job posts stored in the PostgreSQL database.  
+  ![PostgreSQL JobPost Table](https://github.com/venkateshdwivedi/JopPortalJPA/blob/main/src/main/java/com/example/jobportaljpa/screenshots/postgresql_jobpost_table.PNG)
+
 
 
 ## Author
