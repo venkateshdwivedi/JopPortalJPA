@@ -1,104 +1,132 @@
-# Job Portal REST API (Spring Boot + Spring Data JPA + PostgreSQL + AOP)
+# Job Portal API - Spring Boot Project
 
-This is a Spring Boot-based RESTful API that allows managing job postings. It demonstrates layered architecture with Spring Data JPA for database access, uses PostgreSQL as the backend database, and integrates Aspect-Oriented Programming (AOP) for logging, performance monitoring, and input validation.
+This is a secure and modular Job Portal backend application built using Spring Boot. It provides RESTful APIs for job post management and user registration with authentication and authorization handled through Spring Security. The application uses PostgreSQL as the database and includes AOP (Aspect-Oriented Programming) features for logging, validation, and performance monitoring.
 
 ## Features
 
-1. RESTful API built using Spring Boot  
-2. Spring Data JPA for ORM and database interaction  
-3. PostgreSQL as a relational database  
-4. Full CRUD operations for job posts  
-5. Search jobs by keyword in description or profile  
-6. Preload sample data using a dedicated endpoint  
-7. Spring AOP:
-   - Method-level logging (before/after)
-   - Performance monitoring for service methods
-   - Auto-correction of negative job IDs  
-8. Tested thoroughly using Postman
+- Load and retrieve job posts using REST APIs
+- Search job posts by keyword (profile/description)
+- Register new users with encrypted passwords using BCrypt
+- Authenticate users using Spring Security with DAO-based authentication
+- In-memory user setup supported for testing (configurable)
+- Role-based access control using Spring Security
+- Logs method calls and completions using AspectJ
+- Validates input job post ID and converts negatives to positives before execution
+- Monitors method execution time for service methods
+- Clean and layered project structure following best practices
 
 ## Technologies Used
 
-- Java 17+  
-- Spring Boot  
+- Java 21  
+- Spring Boot 3.5.3  
+- Spring Web  
 - Spring Data JPA  
-- Spring AOP  
+- Spring Security  
+- AspectJ (AOP)  
 - PostgreSQL  
 - Maven  
-- Postman  
+- Lombok  
 
-## Getting Started
+## Database Tables
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/venkateshdwivedi/JopPortalJPA.git
-cd JopPortalJPA
-```
-
-### 2. Configure PostgreSQL
-
-Create a PostgreSQL database named `springjdbc`, and update `application.properties` with your DB credentials:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/springjdbc
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-```
-
-### 3. Run the Application
-
-```bash
-mvn spring-boot:run
-```
+- **job_post**: Stores job-related data like profile, description, tech stack, and experience
+- **users**: Stores registered user credentials used for login and authorization
 
 ## API Endpoints
 
-| Method | Endpoint                    | Description                                      |
-|--------|-----------------------------|--------------------------------------------------|
-| GET    | `/jobpost`                  | Get all job posts                                |
-| GET    | `/jobpost/{id}`             | Get job post by ID (auto-corrects negative ID)   |
-| POST   | `/jobpost`                  | Add a new job post                               |
-| PUT    | `/jobpost`                  | Update an existing job post                      |
-| DELETE | `/jobpost/{id}`             | Delete job post by ID                            |
-| GET    | `/jobpost/search/{keyword}` | Search by keyword in profile or description      |
-| GET    | `/load`                     | Preload sample job posts into the database       |
+### JobPost APIs (require authentication)
 
-## Sample JSON for POST/PUT
+- **GET /jobposts**  
+  Retrieve all job posts from the database.
 
-```json
-{
-  "postId": 101,
-  "postProfile": "Java Backend Developer",
-  "postDesc": "Must have experience in Spring Boot and Java",
-  "reqExperience": 3,
-  "postTechStack": ["Java", "Spring Boot", "REST API"]
-}
-```
+- **GET /jobposts/{id}**  
+  Retrieve a specific job post by ID. If a negative ID is passed, it is auto-converted to positive using AOP.
 
-## AOP in This Project
+- **GET /jobposts/search/{keyword}**  
+  Search job posts based on a keyword in job profile or description.
 
-### LoggingAspect
-- Logs method name **before** and **after** `getjob()` is called.
+- **POST /load**  
+  Load a predefined list of job posts into the database.
 
-### PerformanceMonitorAspect
-- Measures time taken for execution of **all service methods**.
+### User APIs (no authentication required)
 
-### ValidationAspect
-- Automatically converts negative job post IDs to positive before `getjob()` executes.
+- **POST /register**  
+  Register a new user by sending a JSON payload. Passwords are encrypted using BCrypt before storage.
 
-## Notes
+  **Sample JSON:**
+  ```json
+  {
+    "id": 101,
+    "username": "john_doe",
+    "password": "pass123"
+  }
+  ```
 
-- Project follows layered architecture:
-  - Controller layer
-  - Service layer
-  - Repository (Spring Data JPA)
-- The project is designed to be modular and testable.
-- Use Postman to test endpoints. Example collections can be created for future reference.
-- If `GET /jobpost` returns empty `{}`, ensure `/load` has been called at least once and DB is running.
+## Spring Security Configuration
 
+- Basic authentication is used for protected endpoints
+- Credentials are fetched from PostgreSQL `users` table
+- Stateless session configuration (`SessionCreationPolicy.STATELESS`)
+- `BCryptPasswordEncoder` used for password encryption
+- Role-based access set to `USER` via custom `UserPrincipal` class
+
+## AOP Features
+
+- **LoggingAspect**: Logs method entry and exit for `getjob(int id)` in `JobService`
+- **ValidationAspect**: Intercepts the method and corrects any negative job post ID to positive before execution
+- **PerformanceMonitorAspect**: Logs method execution time for all methods in `JobService`
+
+## Project Structure
+
+- `model`: Contains JPA entities (`JobPost`, `User`) and custom `UserPrincipal`
+- `controller`: REST controllers for user and job-related operations
+- `service`: Business logic, validation, and AOP-monitored methods
+- `repo`: Repository interfaces for JPA operations
+- `config`: Spring Security configuration including authentication provider and filter chain
+- `aop`: Contains AOP classes for logging, validation, and performance monitoring
+
+## How to Run
+
+1. Ensure PostgreSQL is running
+2. Create a database and configure credentials in `application.properties`
+3. Run the application using:
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+4. Use Postman to test APIs (Authorization tab: Basic Auth with registered credentials)
+
+## Postman Testing (Screenshots included)
+
+- Registering a new user at `/register`
+- Retrieving all job posts after authentication
+- Accessing `/jobposts/{id}` with positive and negative IDs
+- Inserting and viewing data in PostgreSQL job_post and users tables
+- Console logs showing AOP logging and execution time in VS Code
+
+## Security & Access Control
+
+- All job post APIs are protected and require authentication
+- Only registered users can access protected APIs
+- User credentials are stored securely with encrypted passwords
+- DAO-based authentication configured via `UserDetailsService`
+
+## Screenshots (suggested to include in GitHub)
+
+- Postman:
+  - GET /jobposts (authenticated)
+  - GET /jobposts/3
+  - POST /register
+- VS Code terminal showing:
+  - AOP logs and method execution time
+  - Project structure
+- PostgreSQL:
+  - Data in job_post table
+  - Data in users table
 
 ## Author
 
 **Venkatesh Dwivedi**  
-
+GitHub: [github.com/venkateshdwivedi](https://github.com/venkateshdwivedi)  
+LinkedIn: [linkedin.com/in/venkateshdwivedi](https://linkedin.com/in/venkateshdwivedi)
